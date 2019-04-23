@@ -8,7 +8,7 @@
     <property name="can_focus">False</property>
     <property name="icon_name">view-refresh-symbolic</property>
   </object>
-  <template class="openxboxclientMainWindow" parent="GtkApplicationWindow">
+  <template class="OpenXboxClientMainWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
     <property name="icon_name">input-gaming-symbolic</property>

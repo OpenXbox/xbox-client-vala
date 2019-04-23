@@ -1,9 +1,7 @@
 using Gtk;
 using WebKit;
 
-namespace openxbox.client {
-    using WebKit;
-
+namespace OpenXbox.Client {
     [GtkTemplate (ui = "/com/github/gffranco/openxboxclient/openxbox.glade")]
     public class MainWindow : Gtk.ApplicationWindow {
         [GtkChild] private WebView webkitview;
@@ -26,7 +24,9 @@ namespace openxbox.client {
 
         private void ConfigureRefreshButton() {
             refreshButton.clicked.connect(() => {
-                webkitview.load_uri("https://git.gfran.co");
+                /* webkitview.load_uri("https://git.gfran.co"); */
+                LoginWindow login = new LoginWindow();
+                login.show_all();
 				});
         }
     }

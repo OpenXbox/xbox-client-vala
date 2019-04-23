@@ -1,4 +1,8 @@
-project('com.github.gffranco.openxboxclient', 'vala', 'c', version: '0.1.0')
+project('com.github.gffranco.OpenXboxClient', 'vala', 'c', version: '0.1.0')
+
+# Compilers
+c_compiler = meson.get_compiler('c')
+vala_compiler = meson.get_compiler('vala')
 
 add_project_arguments([
         '-DGETTEXT_PACKAGE=\"@0@\"'.format(meson.project_name()),
@@ -14,12 +18,18 @@ subdir('data')
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE=\"@0@\"'.format (meson.project_name()), language:'c')
 
+# Additional lib dir
+lib_dir = join_paths(meson.source_root(), 'lib')
+
 # Adding deps
 dependencies = [
     dependency('glib-2.0', version: '>=2.38'),  
     dependency('gio-unix-2.0', version: '>=2.20'),
     dependency('granite'),
-    dependency('webkit2gtk-4.0')
+    dependency('webkit2gtk-4.0'),
+    dependency('libsoup-2.4'),
+    vala_compiler.find_library('XboxWebApi-1.0', dirs: vapi_dir),
+    c_compiler.find_library('libXboxWebApi', dirs: lib_dir),
 ]
 
 # Adds subfolders specific build system
@@ -70,13 +80,17 @@ appstream_file = i18n.merge_file(
 code_files = files(
     'src/Application.vala',
     'src/MainWindow.vala',
+    'src/LoginWindow.vala',
 )
 code_files += resources_src
+
+include_dir = include_directories('lib')
 
 executable(
     meson.project_name(),
     code_files,
     resources_src,
     dependencies: dependencies,
+    include_directories: include_dir,
     install: true
 )

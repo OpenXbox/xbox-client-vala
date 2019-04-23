@@ -22,43 +22,28 @@ using Granite;
 using Granite.Widgets;
 using Gtk;
 using WebKit;
+using XboxWebApi.Authentication;
 
-namespace openxbox.client {
+namespace OpenXbox.Client {
     public class Application : Granite.Application {
 
         public Application () {
             Object(
                 application_id: "com.github.gffranco.openxboxclient",
                 flags: ApplicationFlags.FLAGS_NONE
-                );
+            );
         }
 
         protected override void activate () {
             var dummyView = new WebView();
             dummyView = null;
 
-            /* var builder = new Builder (); */
-            /* try { */
-            /*     builder.add_from_file ("../data/ui/openxbox.glade"); */
-            /*     builder.connect_signals (null); */
-            /*  */
-            /*     var view = builder.get_object("webkit-view") as WebView; */
-            /*     view.load_uri ("http://openxbox.org"); */
-            /*  */
-            /*     var window = builder.get_object ("main") as ApplicationWindow; */
-            /*     window.set_application(this); */
-            /*     window.show_all ();  */
-            /* } */
-            /* catch (Error e) { */
-            /*     stderr.printf ("Could not load UI: %s\n", e.message); */
-            /* } */
-
             var window = new MainWindow (this);
             window.show_all ();
         }
 
         public static int main (string[] args) {
-            var app = new openxbox.client.Application ();
+            var app = new OpenXbox.Client.Application ();
             return app.run (args);
         }
 

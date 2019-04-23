@@ -3,5 +3,6 @@
   <gresource prefix="/com/github/gffranco/openxboxclient">
     <!-- <file alias="seahorse.css">../libseahorse/seahorse.css</file> -->
     <file alias="openxbox.glade" preprocess="xml-stripblanks">ui/openxbox.glade</file>
+    <file alias="login.glade" preprocess="xml-stripblanks">ui/login.glade</file>
   </gresource>
 </gresources>
