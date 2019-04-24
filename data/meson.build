@@ -5,6 +5,3 @@ resources_xml = join_paths(meson.source_root(), 'data', 'com.github.gffranco.Ope
 resources_src = gnome.compile_resources('OpenXboxClientResources',
   resources_xml,
 )
-
-# VAPI
-vapi_dir = join_paths(meson.source_root(), 'data', 'vapi')

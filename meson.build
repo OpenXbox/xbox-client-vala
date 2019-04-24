@@ -18,8 +18,9 @@ subdir('data')
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE=\"@0@\"'.format (meson.project_name()), language:'c')
 
-# Additional lib dir
-lib_dir = join_paths(meson.source_root(), 'lib')
+# Subprojects
+libXboxWebApi_proj = subproject('libXboxWebApi')
+libXboxWebApi_dep = libXboxWebApi_proj.get_variable('libXboxWebApi_dep')
 
 # Adding deps
 dependencies = [
@@ -29,8 +30,7 @@ dependencies = [
     dependency('webkit2gtk-4.0'),
     dependency('libsoup-2.4'),
     dependency('json-glib-1.0'),
-    vala_compiler.find_library('XboxWebApi-1.0', dirs: vapi_dir),
-    c_compiler.find_library('libXboxWebApi', dirs: lib_dir),
+    libXboxWebApi_dep,
 ]
 
 # Adds subfolders specific build system
@@ -85,13 +85,10 @@ code_files = files(
 )
 code_files += resources_src
 
-include_dir = include_directories('lib')
-
 executable(
     meson.project_name(),
     code_files,
     resources_src,
     dependencies: dependencies,
-    include_directories: include_dir,
     install: true
 )
