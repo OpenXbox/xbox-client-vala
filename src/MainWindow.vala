@@ -24,10 +24,9 @@ namespace OpenXbox.Client {
 
         private void ConfigureRefreshButton() {
             refreshButton.clicked.connect(() => {
-                /* webkitview.load_uri("https://git.gfran.co"); */
                 LoginWindow login = new LoginWindow();
                 login.show_all();
-				});
+			});
         }
     }
 }

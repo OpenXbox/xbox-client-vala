@@ -5,24 +5,114 @@
 #define __XBOXWEBAPI_H__
 
 #include <glib.h>
-#include <glib-object.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib-object.h>
 #include <gee.h>
 
 G_BEGIN_DECLS
 
 
-#define XBOX_WEB_API_TYPE_AUTH (xbox_web_api_auth_get_type ())
-#define XBOX_WEB_API_AUTH(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_TYPE_AUTH, XboxWebApiAuth))
-#define XBOX_WEB_API_AUTH_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_TYPE_AUTH, XboxWebApiAuthClass))
-#define XBOX_WEB_API_IS_AUTH(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_TYPE_AUTH))
-#define XBOX_WEB_API_IS_AUTH_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_TYPE_AUTH))
-#define XBOX_WEB_API_AUTH_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_TYPE_AUTH, XboxWebApiAuthClass))
+#define XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE (xbox_web_api_authentication_authentication_service_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_AUTHENTICATION_SERVICE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE, XboxWebApiAuthenticationAuthenticationService))
+#define XBOX_WEB_API_AUTHENTICATION_AUTHENTICATION_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE, XboxWebApiAuthenticationAuthenticationServiceClass))
+#define XBOX_WEB_API_AUTHENTICATION_IS_AUTHENTICATION_SERVICE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE))
+#define XBOX_WEB_API_AUTHENTICATION_IS_AUTHENTICATION_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE))
+#define XBOX_WEB_API_AUTHENTICATION_AUTHENTICATION_SERVICE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_AUTHENTICATION_SERVICE, XboxWebApiAuthenticationAuthenticationServiceClass))
 
-typedef struct _XboxWebApiAuth XboxWebApiAuth;
-typedef struct _XboxWebApiAuthClass XboxWebApiAuthClass;
-typedef struct _XboxWebApiAuthPrivate XboxWebApiAuthPrivate;
+typedef struct _XboxWebApiAuthenticationAuthenticationService XboxWebApiAuthenticationAuthenticationService;
+typedef struct _XboxWebApiAuthenticationAuthenticationServiceClass XboxWebApiAuthenticationAuthenticationServiceClass;
+typedef struct _XboxWebApiAuthenticationAuthenticationServicePrivate XboxWebApiAuthenticationAuthenticationServicePrivate;
+
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE (xbox_web_api_authentication_model_windows_live_response_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponse))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponseClass))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_WINDOWS_LIVE_RESPONSE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_WINDOWS_LIVE_RESPONSE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponseClass))
+
+typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponse XboxWebApiAuthenticationModelWindowsLiveResponse;
+typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponseClass XboxWebApiAuthenticationModelWindowsLiveResponseClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN (xbox_web_api_authentication_token_base_auth_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_BASE_AUTH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationTokenBaseAuthToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_BASE_AUTH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationTokenBaseAuthTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_BASE_AUTH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_BASE_AUTH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_BASE_AUTH_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationTokenBaseAuthTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenBaseAuthToken XboxWebApiAuthenticationTokenBaseAuthToken;
+typedef struct _XboxWebApiAuthenticationTokenBaseAuthTokenClass XboxWebApiAuthenticationTokenBaseAuthTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN (xbox_web_api_authentication_token_access_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_ACCESS_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationTokenAccessToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_ACCESS_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationTokenAccessTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_ACCESS_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_ACCESS_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_ACCESS_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationTokenAccessTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenAccessToken XboxWebApiAuthenticationTokenAccessToken;
+typedef struct _XboxWebApiAuthenticationTokenAccessTokenClass XboxWebApiAuthenticationTokenAccessTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN (xbox_web_api_authentication_token_refresh_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_REFRESH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationTokenRefreshToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_REFRESH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationTokenRefreshTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_REFRESH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_REFRESH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_REFRESH_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationTokenRefreshTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenRefreshToken XboxWebApiAuthenticationTokenRefreshToken;
+typedef struct _XboxWebApiAuthenticationTokenRefreshTokenClass XboxWebApiAuthenticationTokenRefreshTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN (xbox_web_api_authentication_token_user_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_USER_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN, XboxWebApiAuthenticationTokenUserToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_USER_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN, XboxWebApiAuthenticationTokenUserTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_USER_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_USER_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_USER_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_USER_TOKEN, XboxWebApiAuthenticationTokenUserTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenUserToken XboxWebApiAuthenticationTokenUserToken;
+typedef struct _XboxWebApiAuthenticationTokenUserTokenClass XboxWebApiAuthenticationTokenUserTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN (xbox_web_api_authentication_token_device_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_DEVICE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationTokenDeviceToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_DEVICE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationTokenDeviceTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_DEVICE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_DEVICE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_DEVICE_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationTokenDeviceTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenDeviceToken XboxWebApiAuthenticationTokenDeviceToken;
+typedef struct _XboxWebApiAuthenticationTokenDeviceTokenClass XboxWebApiAuthenticationTokenDeviceTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN (xbox_web_api_authentication_token_title_token_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TITLE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTokenTitleToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TITLE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTokenTitleTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_TITLE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_TITLE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TITLE_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTokenTitleTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenTitleToken XboxWebApiAuthenticationTokenTitleToken;
+typedef struct _XboxWebApiAuthenticationTokenTitleTokenClass XboxWebApiAuthenticationTokenTitleTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN (xbox_web_api_authentication_token_xtoken_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_XTOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN, XboxWebApiAuthenticationTokenXToken))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_XTOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN, XboxWebApiAuthenticationTokenXTokenClass))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_XTOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_IS_XTOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN))
+#define XBOX_WEB_API_AUTHENTICATION_TOKEN_XTOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TOKEN_TYPE_XTOKEN, XboxWebApiAuthenticationTokenXTokenClass))
+
+typedef struct _XboxWebApiAuthenticationTokenXToken XboxWebApiAuthenticationTokenXToken;
+typedef struct _XboxWebApiAuthenticationTokenXTokenClass XboxWebApiAuthenticationTokenXTokenClass;
+
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION (xbox_web_api_authentication_model_xbox_user_information_get_type ())
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformation))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformationClass))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_XBOX_USER_INFORMATION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_XBOX_USER_INFORMATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION))
+#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformationClass))
+
+typedef struct _XboxWebApiAuthenticationModelXboxUserInformation XboxWebApiAuthenticationModelXboxUserInformation;
+typedef struct _XboxWebApiAuthenticationModelXboxUserInformationClass XboxWebApiAuthenticationModelXboxUserInformationClass;
 
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_AUTHENTICATION_QUERY (xbox_web_api_authentication_model_windows_live_authentication_query_get_type ())
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_AUTHENTICATION_QUERY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_AUTHENTICATION_QUERY, XboxWebApiAuthenticationModelWindowsLiveAuthenticationQuery))
@@ -45,36 +135,6 @@ typedef struct _XboxWebApiAuthenticationModelWindowsLiveAuthenticationQueryPriva
 typedef struct _XboxWebApiAuthenticationModelWindowsLiveRefreshQuery XboxWebApiAuthenticationModelWindowsLiveRefreshQuery;
 typedef struct _XboxWebApiAuthenticationModelWindowsLiveRefreshQueryClass XboxWebApiAuthenticationModelWindowsLiveRefreshQueryClass;
 typedef struct _XboxWebApiAuthenticationModelWindowsLiveRefreshQueryPrivate XboxWebApiAuthenticationModelWindowsLiveRefreshQueryPrivate;
-
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN (xbox_web_api_authentication_base_auth_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_BASE_AUTH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationBaseAuthToken))
-#define XBOX_WEB_API_AUTHENTICATION_BASE_AUTH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationBaseAuthTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_BASE_AUTH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_BASE_AUTH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_BASE_AUTH_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_BASE_AUTH_TOKEN, XboxWebApiAuthenticationBaseAuthTokenClass))
-
-typedef struct _XboxWebApiAuthenticationBaseAuthToken XboxWebApiAuthenticationBaseAuthToken;
-typedef struct _XboxWebApiAuthenticationBaseAuthTokenClass XboxWebApiAuthenticationBaseAuthTokenClass;
-
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN (xbox_web_api_authentication_refresh_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_REFRESH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationRefreshToken))
-#define XBOX_WEB_API_AUTHENTICATION_REFRESH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationRefreshTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_REFRESH_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_REFRESH_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_REFRESH_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_REFRESH_TOKEN, XboxWebApiAuthenticationRefreshTokenClass))
-
-typedef struct _XboxWebApiAuthenticationRefreshToken XboxWebApiAuthenticationRefreshToken;
-typedef struct _XboxWebApiAuthenticationRefreshTokenClass XboxWebApiAuthenticationRefreshTokenClass;
-
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE (xbox_web_api_authentication_model_windows_live_response_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponse))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponseClass))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_WINDOWS_LIVE_RESPONSE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_WINDOWS_LIVE_RESPONSE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_WINDOWS_LIVE_RESPONSE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_WINDOWS_LIVE_RESPONSE, XboxWebApiAuthenticationModelWindowsLiveResponseClass))
-
-typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponse XboxWebApiAuthenticationModelWindowsLiveResponse;
-typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponseClass XboxWebApiAuthenticationModelWindowsLiveResponseClass;
 typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponsePrivate XboxWebApiAuthenticationModelWindowsLiveResponsePrivate;
 
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XASD_REQUEST (xbox_web_api_authentication_model_xasd_request_get_type ())
@@ -87,16 +147,6 @@ typedef struct _XboxWebApiAuthenticationModelWindowsLiveResponsePrivate XboxWebA
 typedef struct _XboxWebApiAuthenticationModelXASDRequest XboxWebApiAuthenticationModelXASDRequest;
 typedef struct _XboxWebApiAuthenticationModelXASDRequestClass XboxWebApiAuthenticationModelXASDRequestClass;
 typedef struct _XboxWebApiAuthenticationModelXASDRequestPrivate XboxWebApiAuthenticationModelXASDRequestPrivate;
-
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN (xbox_web_api_authentication_access_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_ACCESS_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationAccessToken))
-#define XBOX_WEB_API_AUTHENTICATION_ACCESS_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationAccessTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_ACCESS_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_ACCESS_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_ACCESS_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_ACCESS_TOKEN, XboxWebApiAuthenticationAccessTokenClass))
-
-typedef struct _XboxWebApiAuthenticationAccessToken XboxWebApiAuthenticationAccessToken;
-typedef struct _XboxWebApiAuthenticationAccessTokenClass XboxWebApiAuthenticationAccessTokenClass;
 
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XASD_PROPERTIES (xbox_web_api_authentication_model_xasd_properties_get_type ())
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XASD_PROPERTIES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XASD_PROPERTIES, XboxWebApiAuthenticationModelXASDProperties))
@@ -120,16 +170,6 @@ typedef struct _XboxWebApiAuthenticationModelXASResponse XboxWebApiAuthenticatio
 typedef struct _XboxWebApiAuthenticationModelXASResponseClass XboxWebApiAuthenticationModelXASResponseClass;
 typedef struct _XboxWebApiAuthenticationModelXASResponsePrivate XboxWebApiAuthenticationModelXASResponsePrivate;
 
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION (xbox_web_api_authentication_model_xbox_user_information_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformation))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformationClass))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_XBOX_USER_INFORMATION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_IS_XBOX_USER_INFORMATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION))
-#define XBOX_WEB_API_AUTHENTICATION_MODEL_XBOX_USER_INFORMATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XBOX_USER_INFORMATION, XboxWebApiAuthenticationModelXboxUserInformationClass))
-
-typedef struct _XboxWebApiAuthenticationModelXboxUserInformation XboxWebApiAuthenticationModelXboxUserInformation;
-typedef struct _XboxWebApiAuthenticationModelXboxUserInformationClass XboxWebApiAuthenticationModelXboxUserInformationClass;
-
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XAST_REQUEST (xbox_web_api_authentication_model_xast_request_get_type ())
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XAST_REQUEST(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XAST_REQUEST, XboxWebApiAuthenticationModelXASTRequest))
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XAST_REQUEST_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XAST_REQUEST, XboxWebApiAuthenticationModelXASTRequestClass))
@@ -140,16 +180,6 @@ typedef struct _XboxWebApiAuthenticationModelXboxUserInformationClass XboxWebApi
 typedef struct _XboxWebApiAuthenticationModelXASTRequest XboxWebApiAuthenticationModelXASTRequest;
 typedef struct _XboxWebApiAuthenticationModelXASTRequestClass XboxWebApiAuthenticationModelXASTRequestClass;
 typedef struct _XboxWebApiAuthenticationModelXASTRequestPrivate XboxWebApiAuthenticationModelXASTRequestPrivate;
-
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN (xbox_web_api_authentication_device_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_DEVICE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationDeviceToken))
-#define XBOX_WEB_API_AUTHENTICATION_DEVICE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationDeviceTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_DEVICE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_DEVICE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_DEVICE_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_DEVICE_TOKEN, XboxWebApiAuthenticationDeviceTokenClass))
-
-typedef struct _XboxWebApiAuthenticationDeviceToken XboxWebApiAuthenticationDeviceToken;
-typedef struct _XboxWebApiAuthenticationDeviceTokenClass XboxWebApiAuthenticationDeviceTokenClass;
 
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XAST_PROPERTIES (xbox_web_api_authentication_model_xast_properties_get_type ())
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XAST_PROPERTIES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XAST_PROPERTIES, XboxWebApiAuthenticationModelXASTProperties))
@@ -196,26 +226,6 @@ typedef struct _XboxWebApiAuthenticationModelXSTSRequest XboxWebApiAuthenticatio
 typedef struct _XboxWebApiAuthenticationModelXSTSRequestClass XboxWebApiAuthenticationModelXSTSRequestClass;
 typedef struct _XboxWebApiAuthenticationModelXSTSRequestPrivate XboxWebApiAuthenticationModelXSTSRequestPrivate;
 
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN (xbox_web_api_authentication_user_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_USER_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN, XboxWebApiAuthenticationUserToken))
-#define XBOX_WEB_API_AUTHENTICATION_USER_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN, XboxWebApiAuthenticationUserTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_USER_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_USER_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_USER_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_USER_TOKEN, XboxWebApiAuthenticationUserTokenClass))
-
-typedef struct _XboxWebApiAuthenticationUserToken XboxWebApiAuthenticationUserToken;
-typedef struct _XboxWebApiAuthenticationUserTokenClass XboxWebApiAuthenticationUserTokenClass;
-
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN (xbox_web_api_authentication_title_token_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_TITLE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTitleToken))
-#define XBOX_WEB_API_AUTHENTICATION_TITLE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTitleTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_TITLE_TOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_TITLE_TOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_TITLE_TOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_TITLE_TOKEN, XboxWebApiAuthenticationTitleTokenClass))
-
-typedef struct _XboxWebApiAuthenticationTitleToken XboxWebApiAuthenticationTitleToken;
-typedef struct _XboxWebApiAuthenticationTitleTokenClass XboxWebApiAuthenticationTitleTokenClass;
-
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XSTS_PROPERTIES (xbox_web_api_authentication_model_xsts_properties_get_type ())
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XSTS_PROPERTIES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XSTS_PROPERTIES, XboxWebApiAuthenticationModelXSTSProperties))
 #define XBOX_WEB_API_AUTHENTICATION_MODEL_XSTS_PROPERTIES_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_MODEL_TYPE_XSTS_PROPERTIES, XboxWebApiAuthenticationModelXSTSPropertiesClass))
@@ -226,33 +236,23 @@ typedef struct _XboxWebApiAuthenticationTitleTokenClass XboxWebApiAuthentication
 typedef struct _XboxWebApiAuthenticationModelXSTSProperties XboxWebApiAuthenticationModelXSTSProperties;
 typedef struct _XboxWebApiAuthenticationModelXSTSPropertiesClass XboxWebApiAuthenticationModelXSTSPropertiesClass;
 typedef struct _XboxWebApiAuthenticationModelXSTSPropertiesPrivate XboxWebApiAuthenticationModelXSTSPropertiesPrivate;
-typedef struct _XboxWebApiAuthenticationBaseAuthTokenPrivate XboxWebApiAuthenticationBaseAuthTokenPrivate;
-typedef struct _XboxWebApiAuthenticationAccessTokenPrivate XboxWebApiAuthenticationAccessTokenPrivate;
-typedef struct _XboxWebApiAuthenticationDeviceTokenPrivate XboxWebApiAuthenticationDeviceTokenPrivate;
-typedef struct _XboxWebApiAuthenticationRefreshTokenPrivate XboxWebApiAuthenticationRefreshTokenPrivate;
-typedef struct _XboxWebApiAuthenticationTitleTokenPrivate XboxWebApiAuthenticationTitleTokenPrivate;
-typedef struct _XboxWebApiAuthenticationUserTokenPrivate XboxWebApiAuthenticationUserTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenBaseAuthTokenPrivate XboxWebApiAuthenticationTokenBaseAuthTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenAccessTokenPrivate XboxWebApiAuthenticationTokenAccessTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenDeviceTokenPrivate XboxWebApiAuthenticationTokenDeviceTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenRefreshTokenPrivate XboxWebApiAuthenticationTokenRefreshTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenTitleTokenPrivate XboxWebApiAuthenticationTokenTitleTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenUserTokenPrivate XboxWebApiAuthenticationTokenUserTokenPrivate;
+typedef struct _XboxWebApiAuthenticationTokenXTokenPrivate XboxWebApiAuthenticationTokenXTokenPrivate;
 
-#define XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN (xbox_web_api_authentication_xtoken_get_type ())
-#define XBOX_WEB_API_AUTHENTICATION_XTOKEN(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN, XboxWebApiAuthenticationXToken))
-#define XBOX_WEB_API_AUTHENTICATION_XTOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN, XboxWebApiAuthenticationXTokenClass))
-#define XBOX_WEB_API_AUTHENTICATION_IS_XTOKEN(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_IS_XTOKEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN))
-#define XBOX_WEB_API_AUTHENTICATION_XTOKEN_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), XBOX_WEB_API_AUTHENTICATION_TYPE_XTOKEN, XboxWebApiAuthenticationXTokenClass))
-
-typedef struct _XboxWebApiAuthenticationXToken XboxWebApiAuthenticationXToken;
-typedef struct _XboxWebApiAuthenticationXTokenClass XboxWebApiAuthenticationXTokenClass;
-typedef struct _XboxWebApiAuthenticationXTokenPrivate XboxWebApiAuthenticationXTokenPrivate;
-
-struct _XboxWebApiAuth {
+struct _XboxWebApiAuthenticationAuthenticationService {
 	GTypeInstance parent_instance;
 	volatile int ref_count;
-	XboxWebApiAuthPrivate * priv;
+	XboxWebApiAuthenticationAuthenticationServicePrivate * priv;
 };
 
-struct _XboxWebApiAuthClass {
+struct _XboxWebApiAuthenticationAuthenticationServiceClass {
 	GTypeClass parent_class;
-	void (*finalize) (XboxWebApiAuth *self);
+	void (*finalize) (XboxWebApiAuthenticationAuthenticationService *self);
 };
 
 struct _XboxWebApiAuthenticationModelWindowsLiveAuthenticationQuery {
@@ -278,20 +278,12 @@ struct _XboxWebApiAuthenticationModelWindowsLiveRefreshQueryClass {
 };
 
 struct _XboxWebApiAuthenticationModelWindowsLiveResponse {
-	GTypeInstance parent_instance;
-	volatile int ref_count;
+	GObject parent_instance;
 	XboxWebApiAuthenticationModelWindowsLiveResponsePrivate * priv;
-	gchar* access_token;
-	gint expires_in;
-	gchar* refresh_token;
-	gchar* user_id;
-	gchar* scope;
-	gchar* token_type;
 };
 
 struct _XboxWebApiAuthenticationModelWindowsLiveResponseClass {
-	GTypeClass parent_class;
-	void (*finalize) (XboxWebApiAuthenticationModelWindowsLiveResponse *self);
+	GObjectClass parent_class;
 };
 
 struct _XboxWebApiAuthenticationModelXASDRequest {
@@ -415,93 +407,150 @@ struct _XboxWebApiAuthenticationModelXSTSPropertiesClass {
 	void (*finalize) (XboxWebApiAuthenticationModelXSTSProperties *self);
 };
 
-struct _XboxWebApiAuthenticationBaseAuthToken {
+struct _XboxWebApiAuthenticationTokenBaseAuthToken {
 	GObject parent_instance;
-	XboxWebApiAuthenticationBaseAuthTokenPrivate * priv;
+	XboxWebApiAuthenticationTokenBaseAuthTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationBaseAuthTokenClass {
+struct _XboxWebApiAuthenticationTokenBaseAuthTokenClass {
 	GObjectClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationAccessToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationAccessTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenAccessToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenAccessTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationAccessTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenAccessTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationDeviceToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationDeviceTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenDeviceToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenDeviceTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationDeviceTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenDeviceTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationRefreshToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationRefreshTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenRefreshToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenRefreshTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationRefreshTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenRefreshTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationTitleToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationTitleTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenTitleToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenTitleTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationTitleTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenTitleTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationUserToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationUserTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenUserToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenUserTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationUserTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenUserTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
-struct _XboxWebApiAuthenticationXToken {
-	XboxWebApiAuthenticationBaseAuthToken parent_instance;
-	XboxWebApiAuthenticationXTokenPrivate * priv;
+struct _XboxWebApiAuthenticationTokenXToken {
+	XboxWebApiAuthenticationTokenBaseAuthToken parent_instance;
+	XboxWebApiAuthenticationTokenXTokenPrivate * priv;
 };
 
-struct _XboxWebApiAuthenticationXTokenClass {
-	XboxWebApiAuthenticationBaseAuthTokenClass parent_class;
+struct _XboxWebApiAuthenticationTokenXTokenClass {
+	XboxWebApiAuthenticationTokenBaseAuthTokenClass parent_class;
 };
 
 
-gpointer xbox_web_api_auth_ref (gpointer instance);
-void xbox_web_api_auth_unref (gpointer instance);
-GParamSpec* xbox_web_api_param_spec_auth (const gchar* name,
-                                          const gchar* nick,
-                                          const gchar* blurb,
-                                          GType object_type,
-                                          GParamFlags flags);
-void xbox_web_api_value_set_auth (GValue* value,
-                                  gpointer v_object);
-void xbox_web_api_value_take_auth (GValue* value,
-                                   gpointer v_object);
-gpointer xbox_web_api_value_get_auth (const GValue* value);
-GType xbox_web_api_auth_get_type (void) G_GNUC_CONST;
-gint xbox_web_api_auth_login (XboxWebApiAuth* self);
-gint xbox_web_api_auth_logout (XboxWebApiAuth* self);
-XboxWebApiAuth* xbox_web_api_auth_new (void);
-XboxWebApiAuth* xbox_web_api_auth_construct (GType object_type);
 #define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_CLIENT_ID "0000000048093EE3"
-#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_SCOPE "service::user.auth.xboxlive.com::MBI_SSL"
-#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_AUTHORIZE_URL "https://login.live.com/oauth20_authorize.srf"
-#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_REFRESH_TOKEN_URL "https://login.live.com/oauth20_token.srf"
-#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_REDIRECT_URL "https://login.live.com/oauth20_desktop.srf"
-#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_RESPONSE_TYPE "token"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_DISPLAY "touch"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOCALE "en"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_AUTH_RESPONSE_TYPE "token"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_AUTH_SCOPE "service::user.auth.xboxlive.com::MBI_SSL"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_AUTHORIZE_PATH "/oauth20_authorize.srf"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_GRANT_TYPE "refresh_token"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_REDIRECT_URL "https://login.live.com/oauth20_desktop.srf"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_REFRESH_TOKEN_PATH "/oauth20_token.srf"
+#define XBOX_WEB_API_AUTHENTICATION_WINDOWS_LIVE_CONSTANTS_LOGIN_SERVICE_URL "https://login.live.com"
+gpointer xbox_web_api_authentication_authentication_service_ref (gpointer instance);
+void xbox_web_api_authentication_authentication_service_unref (gpointer instance);
+GParamSpec* xbox_web_api_authentication_param_spec_authentication_service (const gchar* name,
+                                                                           const gchar* nick,
+                                                                           const gchar* blurb,
+                                                                           GType object_type,
+                                                                           GParamFlags flags);
+void xbox_web_api_authentication_value_set_authentication_service (GValue* value,
+                                                                   gpointer v_object);
+void xbox_web_api_authentication_value_take_authentication_service (GValue* value,
+                                                                    gpointer v_object);
+gpointer xbox_web_api_authentication_value_get_authentication_service (const GValue* value);
+GType xbox_web_api_authentication_authentication_service_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_new (void);
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_construct (GType object_type);
+GType xbox_web_api_authentication_model_windows_live_response_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_new_from_windows_live_response (XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_construct_from_windows_live_response (GType object_type,
+                                                                                                                                        XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+GType xbox_web_api_authentication_token_base_auth_token_get_type (void) G_GNUC_CONST;
+GType xbox_web_api_authentication_token_access_token_get_type (void) G_GNUC_CONST;
+GType xbox_web_api_authentication_token_refresh_token_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_new_with_tokens (XboxWebApiAuthenticationTokenAccessToken* access_token,
+                                                                                                                   XboxWebApiAuthenticationTokenRefreshToken* refresh_token);
+XboxWebApiAuthenticationAuthenticationService* xbox_web_api_authentication_authentication_service_construct_with_tokens (GType object_type,
+                                                                                                                         XboxWebApiAuthenticationTokenAccessToken* access_token,
+                                                                                                                         XboxWebApiAuthenticationTokenRefreshToken* refresh_token);
+gboolean xbox_web_api_authentication_authentication_service_authenticate (XboxWebApiAuthenticationAuthenticationService* self);
+XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_authentication_service_refresh_live_token_async (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                                                                               XboxWebApiAuthenticationTokenRefreshToken* refresh_token,
+                                                                                                                               GError** error);
+gchar* xbox_web_api_authentication_authentication_service_get_authentication_url (XboxWebApiAuthenticationAuthenticationService* self);
+XboxWebApiAuthenticationTokenAccessToken* xbox_web_api_authentication_authentication_service_get_access_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_access_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                          XboxWebApiAuthenticationTokenAccessToken* value);
+XboxWebApiAuthenticationTokenRefreshToken* xbox_web_api_authentication_authentication_service_get_refresh_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_refresh_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                           XboxWebApiAuthenticationTokenRefreshToken* value);
+GType xbox_web_api_authentication_token_user_token_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationTokenUserToken* xbox_web_api_authentication_authentication_service_get_user_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_user_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                        XboxWebApiAuthenticationTokenUserToken* value);
+GType xbox_web_api_authentication_token_device_token_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationTokenDeviceToken* xbox_web_api_authentication_authentication_service_get_device_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_device_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                          XboxWebApiAuthenticationTokenDeviceToken* value);
+GType xbox_web_api_authentication_token_title_token_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationTokenTitleToken* xbox_web_api_authentication_authentication_service_get_title_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_title_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                         XboxWebApiAuthenticationTokenTitleToken* value);
+GType xbox_web_api_authentication_token_xtoken_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationTokenXToken* xbox_web_api_authentication_authentication_service_get_x_token (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_x_token (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                     XboxWebApiAuthenticationTokenXToken* value);
+gpointer xbox_web_api_authentication_model_xbox_user_information_ref (gpointer instance);
+void xbox_web_api_authentication_model_xbox_user_information_unref (gpointer instance);
+GParamSpec* xbox_web_api_authentication_model_param_spec_xbox_user_information (const gchar* name,
+                                                                                const gchar* nick,
+                                                                                const gchar* blurb,
+                                                                                GType object_type,
+                                                                                GParamFlags flags);
+void xbox_web_api_authentication_model_value_set_xbox_user_information (GValue* value,
+                                                                        gpointer v_object);
+void xbox_web_api_authentication_model_value_take_xbox_user_information (GValue* value,
+                                                                         gpointer v_object);
+gpointer xbox_web_api_authentication_model_value_get_xbox_user_information (const GValue* value);
+GType xbox_web_api_authentication_model_xbox_user_information_get_type (void) G_GNUC_CONST;
+XboxWebApiAuthenticationModelXboxUserInformation* xbox_web_api_authentication_authentication_service_get_user_information (XboxWebApiAuthenticationAuthenticationService* self);
+void xbox_web_api_authentication_authentication_service_set_user_information (XboxWebApiAuthenticationAuthenticationService* self,
+                                                                              XboxWebApiAuthenticationModelXboxUserInformation* value);
 gpointer xbox_web_api_authentication_model_windows_live_authentication_query_ref (gpointer instance);
 void xbox_web_api_authentication_model_windows_live_authentication_query_unref (gpointer instance);
 GParamSpec* xbox_web_api_authentication_model_param_spec_windows_live_authentication_query (const gchar* name,
@@ -548,40 +597,44 @@ void xbox_web_api_authentication_model_value_take_windows_live_refresh_query (GV
                                                                               gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_windows_live_refresh_query (const GValue* value);
 GType xbox_web_api_authentication_model_windows_live_refresh_query_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_base_auth_token_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_refresh_token_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* xbox_web_api_authentication_model_windows_live_refresh_query_new (XboxWebApiAuthenticationRefreshToken* refresh_token,
+XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* xbox_web_api_authentication_model_windows_live_refresh_query_new (XboxWebApiAuthenticationTokenRefreshToken* refresh_token,
                                                                                                                         const gchar* grant_type,
                                                                                                                         const gchar* client_id,
                                                                                                                         const gchar* scope);
 XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* xbox_web_api_authentication_model_windows_live_refresh_query_construct (GType object_type,
-                                                                                                                              XboxWebApiAuthenticationRefreshToken* refresh_token,
+                                                                                                                              XboxWebApiAuthenticationTokenRefreshToken* refresh_token,
                                                                                                                               const gchar* grant_type,
                                                                                                                               const gchar* client_id,
                                                                                                                               const gchar* scope);
-GeeHashMap* xbox_web_api_authentication_model_windows_live_refresh_query_get_query (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
+GHashTable* xbox_web_api_authentication_model_windows_live_refresh_query_get_query (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
 const gchar* xbox_web_api_authentication_model_windows_live_refresh_query_get_grant_type (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
 const gchar* xbox_web_api_authentication_model_windows_live_refresh_query_get_client_id (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
 const gchar* xbox_web_api_authentication_model_windows_live_refresh_query_get_scope (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
 const gchar* xbox_web_api_authentication_model_windows_live_refresh_query_get_refresh_token (XboxWebApiAuthenticationModelWindowsLiveRefreshQuery* self);
-gpointer xbox_web_api_authentication_model_windows_live_response_ref (gpointer instance);
-void xbox_web_api_authentication_model_windows_live_response_unref (gpointer instance);
-GParamSpec* xbox_web_api_authentication_model_param_spec_windows_live_response (const gchar* name,
-                                                                                const gchar* nick,
-                                                                                const gchar* blurb,
-                                                                                GType object_type,
-                                                                                GParamFlags flags);
-void xbox_web_api_authentication_model_value_set_windows_live_response (GValue* value,
-                                                                        gpointer v_object);
-void xbox_web_api_authentication_model_value_take_windows_live_response (GValue* value,
-                                                                         gpointer v_object);
-gpointer xbox_web_api_authentication_model_value_get_windows_live_response (const GValue* value);
-GType xbox_web_api_authentication_model_windows_live_response_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_new_fromQuery (GeeHashMap* query_params);
-XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_construct_fromQuery (GType object_type,
-                                                                                                                               GeeHashMap* query_params);
+XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_new_from_query (GHashTable* query_params);
+XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_construct_from_query (GType object_type,
+                                                                                                                                GHashTable* query_params);
+gchar* xbox_web_api_authentication_model_windows_live_response_to_string (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
 XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_new (void);
 XboxWebApiAuthenticationModelWindowsLiveResponse* xbox_web_api_authentication_model_windows_live_response_construct (GType object_type);
+const gchar* xbox_web_api_authentication_model_windows_live_response_get_access_token (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_access_token (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                               const gchar* value);
+gint xbox_web_api_authentication_model_windows_live_response_get_expires_in (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_expires_in (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                             gint value);
+const gchar* xbox_web_api_authentication_model_windows_live_response_get_refresh_token (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_refresh_token (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                                const gchar* value);
+const gchar* xbox_web_api_authentication_model_windows_live_response_get_user_id (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_user_id (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                          const gchar* value);
+const gchar* xbox_web_api_authentication_model_windows_live_response_get_scope (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_scope (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                        const gchar* value);
+const gchar* xbox_web_api_authentication_model_windows_live_response_get_token_type (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
+void xbox_web_api_authentication_model_windows_live_response_set_token_type (XboxWebApiAuthenticationModelWindowsLiveResponse* self,
+                                                                             const gchar* value);
 GDateTime* xbox_web_api_authentication_model_windows_live_response_get_creation_time (XboxWebApiAuthenticationModelWindowsLiveResponse* self);
 gpointer xbox_web_api_authentication_model_xasd_request_ref (gpointer instance);
 void xbox_web_api_authentication_model_xasd_request_unref (gpointer instance);
@@ -596,14 +649,13 @@ void xbox_web_api_authentication_model_value_take_xasd_request (GValue* value,
                                                                 gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_xasd_request (const GValue* value);
 GType xbox_web_api_authentication_model_xasd_request_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_access_token_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelXASDRequest* xbox_web_api_authentication_model_xasd_request_new (XboxWebApiAuthenticationAccessToken* access_token,
+XboxWebApiAuthenticationModelXASDRequest* xbox_web_api_authentication_model_xasd_request_new (XboxWebApiAuthenticationTokenAccessToken* access_token,
                                                                                               const gchar* relying_party,
                                                                                               const gchar* token_type,
                                                                                               const gchar* auth_method,
                                                                                               const gchar* site_name);
 XboxWebApiAuthenticationModelXASDRequest* xbox_web_api_authentication_model_xasd_request_construct (GType object_type,
-                                                                                                    XboxWebApiAuthenticationAccessToken* access_token,
+                                                                                                    XboxWebApiAuthenticationTokenAccessToken* access_token,
                                                                                                     const gchar* relying_party,
                                                                                                     const gchar* token_type,
                                                                                                     const gchar* auth_method,
@@ -647,19 +699,6 @@ void xbox_web_api_authentication_model_value_take_xas_response (GValue* value,
                                                                 gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_xas_response (const GValue* value);
 GType xbox_web_api_authentication_model_xas_response_get_type (void) G_GNUC_CONST;
-gpointer xbox_web_api_authentication_model_xbox_user_information_ref (gpointer instance);
-void xbox_web_api_authentication_model_xbox_user_information_unref (gpointer instance);
-GParamSpec* xbox_web_api_authentication_model_param_spec_xbox_user_information (const gchar* name,
-                                                                                const gchar* nick,
-                                                                                const gchar* blurb,
-                                                                                GType object_type,
-                                                                                GParamFlags flags);
-void xbox_web_api_authentication_model_value_set_xbox_user_information (GValue* value,
-                                                                        gpointer v_object);
-void xbox_web_api_authentication_model_value_take_xbox_user_information (GValue* value,
-                                                                         gpointer v_object);
-gpointer xbox_web_api_authentication_model_value_get_xbox_user_information (const GValue* value);
-GType xbox_web_api_authentication_model_xbox_user_information_get_type (void) G_GNUC_CONST;
 XboxWebApiAuthenticationModelXASResponse* xbox_web_api_authentication_model_xas_response_new (void);
 XboxWebApiAuthenticationModelXASResponse* xbox_web_api_authentication_model_xas_response_construct (GType object_type);
 gpointer xbox_web_api_authentication_model_xast_request_ref (gpointer instance);
@@ -675,16 +714,15 @@ void xbox_web_api_authentication_model_value_take_xast_request (GValue* value,
                                                                 gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_xast_request (const GValue* value);
 GType xbox_web_api_authentication_model_xast_request_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_device_token_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelXASTRequest* xbox_web_api_authentication_model_xast_request_new (XboxWebApiAuthenticationAccessToken* access_token,
-                                                                                              XboxWebApiAuthenticationDeviceToken* device_token,
+XboxWebApiAuthenticationModelXASTRequest* xbox_web_api_authentication_model_xast_request_new (XboxWebApiAuthenticationTokenAccessToken* access_token,
+                                                                                              XboxWebApiAuthenticationTokenDeviceToken* device_token,
                                                                                               const gchar* relying_party,
                                                                                               const gchar* token_type,
                                                                                               const gchar* auth_method,
                                                                                               const gchar* site_name);
 XboxWebApiAuthenticationModelXASTRequest* xbox_web_api_authentication_model_xast_request_construct (GType object_type,
-                                                                                                    XboxWebApiAuthenticationAccessToken* access_token,
-                                                                                                    XboxWebApiAuthenticationDeviceToken* device_token,
+                                                                                                    XboxWebApiAuthenticationTokenAccessToken* access_token,
+                                                                                                    XboxWebApiAuthenticationTokenDeviceToken* device_token,
                                                                                                     const gchar* relying_party,
                                                                                                     const gchar* token_type,
                                                                                                     const gchar* auth_method,
@@ -731,13 +769,13 @@ void xbox_web_api_authentication_model_value_take_xasu_request (GValue* value,
                                                                 gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_xasu_request (const GValue* value);
 GType xbox_web_api_authentication_model_xasu_request_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelXASURequest* xbox_web_api_authentication_model_xasu_request_new (XboxWebApiAuthenticationAccessToken* access_token,
+XboxWebApiAuthenticationModelXASURequest* xbox_web_api_authentication_model_xasu_request_new (XboxWebApiAuthenticationTokenAccessToken* access_token,
                                                                                               const gchar* relying_party,
                                                                                               const gchar* token_type,
                                                                                               const gchar* auth_method,
                                                                                               const gchar* site_name);
 XboxWebApiAuthenticationModelXASURequest* xbox_web_api_authentication_model_xasu_request_construct (GType object_type,
-                                                                                                    XboxWebApiAuthenticationAccessToken* access_token,
+                                                                                                    XboxWebApiAuthenticationTokenAccessToken* access_token,
                                                                                                     const gchar* relying_party,
                                                                                                     const gchar* token_type,
                                                                                                     const gchar* auth_method,
@@ -784,21 +822,19 @@ void xbox_web_api_authentication_model_value_take_xsts_request (GValue* value,
                                                                 gpointer v_object);
 gpointer xbox_web_api_authentication_model_value_get_xsts_request (const GValue* value);
 GType xbox_web_api_authentication_model_xsts_request_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_user_token_get_type (void) G_GNUC_CONST;
-GType xbox_web_api_authentication_title_token_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationModelXSTSRequest* xbox_web_api_authentication_model_xsts_request_new (XboxWebApiAuthenticationUserToken* user_token,
+XboxWebApiAuthenticationModelXSTSRequest* xbox_web_api_authentication_model_xsts_request_new (XboxWebApiAuthenticationTokenUserToken* user_token,
                                                                                               const gchar* relying_party,
                                                                                               const gchar* token_type,
                                                                                               const gchar* sandbox_id,
-                                                                                              XboxWebApiAuthenticationDeviceToken* device_token,
-                                                                                              XboxWebApiAuthenticationTitleToken* title_token);
+                                                                                              XboxWebApiAuthenticationTokenDeviceToken* device_token,
+                                                                                              XboxWebApiAuthenticationTokenTitleToken* title_token);
 XboxWebApiAuthenticationModelXSTSRequest* xbox_web_api_authentication_model_xsts_request_construct (GType object_type,
-                                                                                                    XboxWebApiAuthenticationUserToken* user_token,
+                                                                                                    XboxWebApiAuthenticationTokenUserToken* user_token,
                                                                                                     const gchar* relying_party,
                                                                                                     const gchar* token_type,
                                                                                                     const gchar* sandbox_id,
-                                                                                                    XboxWebApiAuthenticationDeviceToken* device_token,
-                                                                                                    XboxWebApiAuthenticationTitleToken* title_token);
+                                                                                                    XboxWebApiAuthenticationTokenDeviceToken* device_token,
+                                                                                                    XboxWebApiAuthenticationTokenTitleToken* title_token);
 const gchar* xbox_web_api_authentication_model_xsts_request_get_relying_party (XboxWebApiAuthenticationModelXSTSRequest* self);
 const gchar* xbox_web_api_authentication_model_xsts_request_get_token_type (XboxWebApiAuthenticationModelXSTSRequest* self);
 gpointer xbox_web_api_authentication_model_xsts_properties_ref (gpointer instance);
@@ -838,45 +874,44 @@ void xbox_web_api_authentication_model_xsts_properties_set_device_token (XboxWeb
 const gchar* xbox_web_api_authentication_model_xsts_properties_get_title_token (XboxWebApiAuthenticationModelXSTSProperties* self);
 void xbox_web_api_authentication_model_xsts_properties_set_title_token (XboxWebApiAuthenticationModelXSTSProperties* self,
                                                                         const gchar* value);
-XboxWebApiAuthenticationAccessToken* xbox_web_api_authentication_access_token_new_from_windowsliveresponse (XboxWebApiAuthenticationModelWindowsLiveResponse* response);
-XboxWebApiAuthenticationAccessToken* xbox_web_api_authentication_access_token_construct_from_windowsliveresponse (GType object_type,
-                                                                                                                  XboxWebApiAuthenticationModelWindowsLiveResponse* response);
-XboxWebApiAuthenticationAccessToken* xbox_web_api_authentication_access_token_new (void);
-XboxWebApiAuthenticationAccessToken* xbox_web_api_authentication_access_token_construct (GType object_type);
-XboxWebApiAuthenticationBaseAuthToken* xbox_web_api_authentication_base_auth_token_new_from_xasresponse (XboxWebApiAuthenticationModelXASResponse* token_response);
-XboxWebApiAuthenticationBaseAuthToken* xbox_web_api_authentication_base_auth_token_construct_from_xasresponse (GType object_type,
-                                                                                                               XboxWebApiAuthenticationModelXASResponse* token_response);
-gboolean xbox_web_api_authentication_base_auth_token_is_valid (XboxWebApiAuthenticationBaseAuthToken* self);
-gboolean xbox_web_api_authentication_base_auth_token_has_user_information (XboxWebApiAuthenticationBaseAuthToken* self);
-gchar* xbox_web_api_authentication_base_auth_token_to_string (XboxWebApiAuthenticationBaseAuthToken* self);
-XboxWebApiAuthenticationBaseAuthToken* xbox_web_api_authentication_base_auth_token_new (void);
-XboxWebApiAuthenticationBaseAuthToken* xbox_web_api_authentication_base_auth_token_construct (GType object_type);
-const gchar* xbox_web_api_authentication_base_auth_token_get_jwt (XboxWebApiAuthenticationBaseAuthToken* self);
-void xbox_web_api_authentication_base_auth_token_set_jwt (XboxWebApiAuthenticationBaseAuthToken* self,
-                                                          const gchar* value);
-GDateTime* xbox_web_api_authentication_base_auth_token_get_issued (XboxWebApiAuthenticationBaseAuthToken* self);
-void xbox_web_api_authentication_base_auth_token_set_issued (XboxWebApiAuthenticationBaseAuthToken* self,
-                                                             GDateTime* value);
-GDateTime* xbox_web_api_authentication_base_auth_token_get_expires (XboxWebApiAuthenticationBaseAuthToken* self);
-void xbox_web_api_authentication_base_auth_token_set_expires (XboxWebApiAuthenticationBaseAuthToken* self,
-                                                              GDateTime* value);
-XboxWebApiAuthenticationModelXboxUserInformation* xbox_web_api_authentication_base_auth_token_get_user_information (XboxWebApiAuthenticationBaseAuthToken* self);
-void xbox_web_api_authentication_base_auth_token_set_user_information (XboxWebApiAuthenticationBaseAuthToken* self,
-                                                                       XboxWebApiAuthenticationModelXboxUserInformation* value);
-XboxWebApiAuthenticationDeviceToken* xbox_web_api_authentication_device_token_new (void);
-XboxWebApiAuthenticationDeviceToken* xbox_web_api_authentication_device_token_construct (GType object_type);
-XboxWebApiAuthenticationRefreshToken* xbox_web_api_authentication_refresh_token_new_from_windowsliveresponse (XboxWebApiAuthenticationModelWindowsLiveResponse* response);
-XboxWebApiAuthenticationRefreshToken* xbox_web_api_authentication_refresh_token_construct_from_windowsliveresponse (GType object_type,
-                                                                                                                    XboxWebApiAuthenticationModelWindowsLiveResponse* response);
-XboxWebApiAuthenticationRefreshToken* xbox_web_api_authentication_refresh_token_new (void);
-XboxWebApiAuthenticationRefreshToken* xbox_web_api_authentication_refresh_token_construct (GType object_type);
-XboxWebApiAuthenticationTitleToken* xbox_web_api_authentication_title_token_new (void);
-XboxWebApiAuthenticationTitleToken* xbox_web_api_authentication_title_token_construct (GType object_type);
-XboxWebApiAuthenticationUserToken* xbox_web_api_authentication_user_token_new (void);
-XboxWebApiAuthenticationUserToken* xbox_web_api_authentication_user_token_construct (GType object_type);
-GType xbox_web_api_authentication_xtoken_get_type (void) G_GNUC_CONST;
-XboxWebApiAuthenticationXToken* xbox_web_api_authentication_xtoken_new (void);
-XboxWebApiAuthenticationXToken* xbox_web_api_authentication_xtoken_construct (GType object_type);
+XboxWebApiAuthenticationTokenAccessToken* xbox_web_api_authentication_token_access_token_new_from_windows_live_response (XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+XboxWebApiAuthenticationTokenAccessToken* xbox_web_api_authentication_token_access_token_construct_from_windows_live_response (GType object_type,
+                                                                                                                               XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+XboxWebApiAuthenticationTokenAccessToken* xbox_web_api_authentication_token_access_token_new (void);
+XboxWebApiAuthenticationTokenAccessToken* xbox_web_api_authentication_token_access_token_construct (GType object_type);
+XboxWebApiAuthenticationTokenBaseAuthToken* xbox_web_api_authentication_token_base_auth_token_new_from_xasresponse (XboxWebApiAuthenticationModelXASResponse* token_response);
+XboxWebApiAuthenticationTokenBaseAuthToken* xbox_web_api_authentication_token_base_auth_token_construct_from_xasresponse (GType object_type,
+                                                                                                                          XboxWebApiAuthenticationModelXASResponse* token_response);
+gboolean xbox_web_api_authentication_token_base_auth_token_is_valid (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+gboolean xbox_web_api_authentication_token_base_auth_token_has_user_information (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+gchar* xbox_web_api_authentication_token_base_auth_token_to_string (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+XboxWebApiAuthenticationTokenBaseAuthToken* xbox_web_api_authentication_token_base_auth_token_new (void);
+XboxWebApiAuthenticationTokenBaseAuthToken* xbox_web_api_authentication_token_base_auth_token_construct (GType object_type);
+const gchar* xbox_web_api_authentication_token_base_auth_token_get_jwt (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+void xbox_web_api_authentication_token_base_auth_token_set_jwt (XboxWebApiAuthenticationTokenBaseAuthToken* self,
+                                                                const gchar* value);
+GDateTime* xbox_web_api_authentication_token_base_auth_token_get_issued (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+void xbox_web_api_authentication_token_base_auth_token_set_issued (XboxWebApiAuthenticationTokenBaseAuthToken* self,
+                                                                   GDateTime* value);
+GDateTime* xbox_web_api_authentication_token_base_auth_token_get_expires (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+void xbox_web_api_authentication_token_base_auth_token_set_expires (XboxWebApiAuthenticationTokenBaseAuthToken* self,
+                                                                    GDateTime* value);
+XboxWebApiAuthenticationModelXboxUserInformation* xbox_web_api_authentication_token_base_auth_token_get_user_information (XboxWebApiAuthenticationTokenBaseAuthToken* self);
+void xbox_web_api_authentication_token_base_auth_token_set_user_information (XboxWebApiAuthenticationTokenBaseAuthToken* self,
+                                                                             XboxWebApiAuthenticationModelXboxUserInformation* value);
+XboxWebApiAuthenticationTokenDeviceToken* xbox_web_api_authentication_token_device_token_new (void);
+XboxWebApiAuthenticationTokenDeviceToken* xbox_web_api_authentication_token_device_token_construct (GType object_type);
+XboxWebApiAuthenticationTokenRefreshToken* xbox_web_api_authentication_token_refresh_token_new_from_windows_live_response (XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+XboxWebApiAuthenticationTokenRefreshToken* xbox_web_api_authentication_token_refresh_token_construct_from_windows_live_response (GType object_type,
+                                                                                                                                 XboxWebApiAuthenticationModelWindowsLiveResponse* response);
+XboxWebApiAuthenticationTokenRefreshToken* xbox_web_api_authentication_token_refresh_token_new (void);
+XboxWebApiAuthenticationTokenRefreshToken* xbox_web_api_authentication_token_refresh_token_construct (GType object_type);
+XboxWebApiAuthenticationTokenTitleToken* xbox_web_api_authentication_token_title_token_new (void);
+XboxWebApiAuthenticationTokenTitleToken* xbox_web_api_authentication_token_title_token_construct (GType object_type);
+XboxWebApiAuthenticationTokenUserToken* xbox_web_api_authentication_token_user_token_new (void);
+XboxWebApiAuthenticationTokenUserToken* xbox_web_api_authentication_token_user_token_construct (GType object_type);
+XboxWebApiAuthenticationTokenXToken* xbox_web_api_authentication_token_xtoken_new (void);
+XboxWebApiAuthenticationTokenXToken* xbox_web_api_authentication_token_xtoken_construct (GType object_type);
 
 
 G_END_DECLS

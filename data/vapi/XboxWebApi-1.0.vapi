@@ -5,7 +5,7 @@ namespace XboxWebApi {
 		namespace Model {
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class WindowsLiveAuthenticationQuery {
-				public WindowsLiveAuthenticationQuery (string response_type = "token", string scope = WindowsLiveConstants.SCOPE, string redirect_uri = WindowsLiveConstants.REDIRECT_URL, string client_id = WindowsLiveConstants.CLIENT_ID, string display = "touch", string locale = "en");
+				public WindowsLiveAuthenticationQuery (string response_type = WindowsLiveConstants.LOGIN_AUTH_RESPONSE_TYPE, string scope = WindowsLiveConstants.LOGIN_AUTH_SCOPE, string redirect_uri = WindowsLiveConstants.LOGIN_REDIRECT_URL, string client_id = WindowsLiveConstants.CLIENT_ID, string display = WindowsLiveConstants.DISPLAY, string locale = WindowsLiveConstants.LOCALE);
 				public GLib.HashTable<string,string> get_query ();
 				public string client_id { get; internal set; }
 				public string display { get; internal set; }
@@ -16,24 +16,25 @@ namespace XboxWebApi {
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class WindowsLiveRefreshQuery {
-				public WindowsLiveRefreshQuery (XboxWebApi.Authentication.RefreshToken refresh_token, string grant_type = "refresh_token", string client_id = WindowsLiveConstants.CLIENT_ID, string scope = WindowsLiveConstants.SCOPE);
-				public Gee.HashMap get_query ();
+				public WindowsLiveRefreshQuery (XboxWebApi.Authentication.Token.RefreshToken refresh_token, string grant_type = WindowsLiveConstants.LOGIN_GRANT_TYPE, string client_id = WindowsLiveConstants.CLIENT_ID, string scope = WindowsLiveConstants.LOGIN_AUTH_SCOPE);
+				public GLib.HashTable<string,string> get_query ();
 				public string client_id { get; internal set; }
 				public string grant_type { get; internal set; }
 				public string refresh_token { get; internal set; }
 				public string scope { get; internal set; }
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public class WindowsLiveResponse {
-				public string access_token;
-				public int expires_in;
-				public string refresh_token;
-				public string scope;
-				public string token_type;
-				public string user_id;
+			public class WindowsLiveResponse : GLib.Object {
 				public WindowsLiveResponse ();
-				public WindowsLiveResponse.fromQuery (Gee.HashMap<string,string> query_params);
+				public WindowsLiveResponse.from_query (GLib.HashTable<string,string> query_params);
+				public string to_string ();
+				public string access_token { get; set; }
 				public GLib.DateTime creation_time { get; private set; }
+				public int expires_in { get; set; }
+				public string refresh_token { get; set; }
+				public string scope { get; set; }
+				public string token_type { get; set; }
+				public string user_id { get; set; }
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class XASDProperties {
@@ -44,7 +45,7 @@ namespace XboxWebApi {
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class XASDRequest {
-				public XASDRequest (XboxWebApi.Authentication.AccessToken access_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
+				public XASDRequest (XboxWebApi.Authentication.Token.AccessToken access_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
 				public XboxWebApi.Authentication.Model.XASDProperties properties { get; internal set; }
 				public string relying_party { get; internal set; }
 				public string token_type { get; internal set; }
@@ -67,7 +68,7 @@ namespace XboxWebApi {
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class XASTRequest {
-				public XASTRequest (XboxWebApi.Authentication.AccessToken access_token, XboxWebApi.Authentication.DeviceToken device_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
+				public XASTRequest (XboxWebApi.Authentication.Token.AccessToken access_token, XboxWebApi.Authentication.Token.DeviceToken device_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
 				public XboxWebApi.Authentication.Model.XASTProperties properties { get; internal set; }
 				public string relying_party { get; internal set; }
 				public string token_type { get; internal set; }
@@ -81,7 +82,7 @@ namespace XboxWebApi {
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class XASURequest {
-				public XASURequest (XboxWebApi.Authentication.AccessToken access_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
+				public XASURequest (XboxWebApi.Authentication.Token.AccessToken access_token, string relying_party = "http://auth.xboxlive.com", string token_type = "JWT", string auth_method = "RPS", string site_name = "user.auth.xboxlive.com");
 				public XboxWebApi.Authentication.Model.XASUProperties properties { get; internal set; }
 				public string relying_party { get; internal set; }
 				public string token_type { get; internal set; }
@@ -96,7 +97,7 @@ namespace XboxWebApi {
 			}
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public class XSTSRequest {
-				public XSTSRequest (XboxWebApi.Authentication.UserToken user_token, string relying_party = "http://xboxlive.com", string token_type = "JWT", string sandbox_id = "RETAIL", XboxWebApi.Authentication.DeviceToken device_token, XboxWebApi.Authentication.TitleToken title_token);
+				public XSTSRequest (XboxWebApi.Authentication.Token.UserToken user_token, string relying_party = "http://xboxlive.com", string token_type = "JWT", string sandbox_id = "RETAIL", XboxWebApi.Authentication.Token.DeviceToken device_token, XboxWebApi.Authentication.Token.TitleToken title_token);
 				public XboxWebApi.Authentication.Model.XSTSProperties properties { get; internal set; }
 				public string relying_party { get; internal set; }
 				public string token_type { get; internal set; }
@@ -114,63 +115,83 @@ namespace XboxWebApi {
 				public string to_string ();
 			}
 		}
-		namespace WindowsLiveConstants {
+		namespace Token {
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public const string AUTHORIZE_URL;
+			public class AccessToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public AccessToken ();
+				public AccessToken.from_windows_live_response (XboxWebApi.Authentication.Model.WindowsLiveResponse response);
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class BaseAuthToken : GLib.Object {
+				public BaseAuthToken ();
+				public BaseAuthToken.from_xasresponse (XboxWebApi.Authentication.Model.XASResponse token_response);
+				public bool has_user_information ();
+				public bool is_valid ();
+				public string to_string ();
+				public GLib.DateTime expires { get; set; }
+				public GLib.DateTime issued { get; set; }
+				public string jwt { get; set; }
+				public XboxWebApi.Authentication.Model.XboxUserInformation user_information { get; set; }
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class DeviceToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public DeviceToken ();
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class RefreshToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public RefreshToken ();
+				public RefreshToken.from_windows_live_response (XboxWebApi.Authentication.Model.WindowsLiveResponse response);
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class TitleToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public TitleToken ();
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class UserToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public UserToken ();
+			}
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public class XToken : XboxWebApi.Authentication.Token.BaseAuthToken {
+				public XToken ();
+			}
+		}
+		namespace WindowsLiveConstants {
 			[CCode (cheader_filename = "XboxWebApi.h")]
 			public const string CLIENT_ID;
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public const string REDIRECT_URL;
+			public const string DISPLAY;
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public const string REFRESH_TOKEN_URL;
+			public const string LOCALE;
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public const string RESPONSE_TYPE;
+			public const string LOGIN_AUTHORIZE_PATH;
 			[CCode (cheader_filename = "XboxWebApi.h")]
-			public const string SCOPE;
+			public const string LOGIN_AUTH_RESPONSE_TYPE;
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public const string LOGIN_AUTH_SCOPE;
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public const string LOGIN_GRANT_TYPE;
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public const string LOGIN_REDIRECT_URL;
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public const string LOGIN_REFRESH_TOKEN_PATH;
+			[CCode (cheader_filename = "XboxWebApi.h")]
+			public const string LOGIN_SERVICE_URL;
 		}
 		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class AccessToken : XboxWebApi.Authentication.BaseAuthToken {
-			public AccessToken ();
-			public AccessToken.from_windowsliveresponse (XboxWebApi.Authentication.Model.WindowsLiveResponse response);
-		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class BaseAuthToken : GLib.Object {
-			public BaseAuthToken ();
-			public BaseAuthToken.from_xasresponse (XboxWebApi.Authentication.Model.XASResponse token_response);
-			public bool has_user_information ();
-			public bool is_valid ();
-			public string to_string ();
-			public GLib.DateTime expires { get; set; }
-			public GLib.DateTime issued { get; set; }
-			public string jwt { get; set; }
+		public class AuthenticationService {
+			public AuthenticationService ();
+			public bool authenticate ();
+			public AuthenticationService.from_windows_live_response (XboxWebApi.Authentication.Model.WindowsLiveResponse response);
+			public string get_authentication_url ();
+			public XboxWebApi.Authentication.Model.WindowsLiveResponse refresh_live_token_async (XboxWebApi.Authentication.Token.RefreshToken refresh_token) throws GLib.Error;
+			public AuthenticationService.with_tokens (XboxWebApi.Authentication.Token.AccessToken access_token, XboxWebApi.Authentication.Token.RefreshToken refresh_token);
+			public XboxWebApi.Authentication.Token.AccessToken access_token { get; set; }
+			public XboxWebApi.Authentication.Token.DeviceToken device_token { get; set; }
+			public XboxWebApi.Authentication.Token.RefreshToken refresh_token { get; set; }
+			public XboxWebApi.Authentication.Token.TitleToken title_token { get; set; }
 			public XboxWebApi.Authentication.Model.XboxUserInformation user_information { get; set; }
+			public XboxWebApi.Authentication.Token.UserToken user_token { get; set; }
+			public XboxWebApi.Authentication.Token.XToken x_token { get; set; }
 		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class DeviceToken : XboxWebApi.Authentication.BaseAuthToken {
-			public DeviceToken ();
-		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class RefreshToken : XboxWebApi.Authentication.BaseAuthToken {
-			public RefreshToken ();
-			public RefreshToken.from_windowsliveresponse (XboxWebApi.Authentication.Model.WindowsLiveResponse response);
-		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class TitleToken : XboxWebApi.Authentication.BaseAuthToken {
-			public TitleToken ();
-		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class UserToken : XboxWebApi.Authentication.BaseAuthToken {
-			public UserToken ();
-		}
-		[CCode (cheader_filename = "XboxWebApi.h")]
-		public class XToken : XboxWebApi.Authentication.BaseAuthToken {
-			public XToken ();
-		}
-	}
-	[CCode (cheader_filename = "XboxWebApi.h")]
-	public class Auth {
-		public Auth ();
-		public int login ();
-		public int logout ();
 	}
 }

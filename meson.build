@@ -28,6 +28,7 @@ dependencies = [
     dependency('granite'),
     dependency('webkit2gtk-4.0'),
     dependency('libsoup-2.4'),
+    dependency('json-glib-1.0'),
     vala_compiler.find_library('XboxWebApi-1.0', dirs: vapi_dir),
     c_compiler.find_library('libXboxWebApi', dirs: lib_dir),
 ]

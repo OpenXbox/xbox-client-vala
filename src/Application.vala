@@ -23,6 +23,11 @@ using Granite.Widgets;
 using Gtk;
 using WebKit;
 using XboxWebApi.Authentication;
+using XboxWebApi.Authentication.Model;
+
+namespace OpenXbox.Services {
+    private AuthenticationService auth_service;
+}
 
 namespace OpenXbox.Client {
     public class Application : Granite.Application {
@@ -33,13 +38,26 @@ namespace OpenXbox.Client {
                 flags: ApplicationFlags.FLAGS_NONE
             );
         }
-
+        
         protected override void activate () {
+            load_custom_components();
+            initialize_services();
+            show_main_window();
+        }
+
+        private void load_custom_components() {
             var dummyView = new WebView();
             dummyView = null;
+        }
 
+        private void initialize_services() {
+            OpenXbox.Services.auth_service = new AuthenticationService();
+        }
+
+        private void show_main_window() {
             var window = new MainWindow (this);
             window.show_all ();
+
         }
 
         public static int main (string[] args) {
