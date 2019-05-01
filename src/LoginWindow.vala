@@ -21,18 +21,18 @@ namespace OpenXbox.Client {
             webkitview.load_changed.connect((event) => {
                 if(event == LoadEvent.REDIRECTED) {
                     var redirected_uri = webkitview.get_uri();
-                    log_message("Redirect: %s".printf(redirected_uri));
+                    debug ("Redirect: %s", redirected_uri);
                     URI parsed_uri = new URI(redirected_uri);
                     var fragment = parsed_uri.get_fragment();
-                    log_message("Fragments: %s".printf(fragment));
+                    debug ("Fragments: %s", fragment);
                     var query = Form.decode(fragment);
                     query.foreach((k,v) => {
-                        log_message("%s: %s".printf(k,v));
+                        debug ("%s: %s", k,v);
                     });
                     WindowsLiveResponse wlr = new WindowsLiveResponse.from_query(query);
-                    log_message("Response: %s".printf(wlr.to_string()));
+                    debug ("Response: %s", wlr.to_string());
                     OpenXbox.Services.auth_service = new AuthenticationService.from_windows_live_response(wlr);
-                    log_message(OpenXbox.Services.auth_service.authenticate() ? "Authenticated!" : "Failed to authenticate");
+                    info (OpenXbox.Services.auth_service.authenticate() ? "Authenticated!" : "Failed to authenticate");
                 }
             }); 
         }
@@ -43,9 +43,9 @@ namespace OpenXbox.Client {
 
         [GtkCallback]
         public void on_login_show() {
-            log_message ("Starting authentication");
+            info ("Starting authentication");
             var url = OpenXbox.Services.auth_service.get_authentication_url();
-            log_message ("Loading authentication website: %s".printf(url));
+            debug ("Loading authentication website: %s", url);
             webkitview.load_uri (url);
         }
 
