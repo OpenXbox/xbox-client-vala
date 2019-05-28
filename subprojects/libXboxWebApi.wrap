@@ -1,4 +1,4 @@
 [wrap-git]
 directory = libXboxWebApi
-url = https://5d175957ff2de473448c06109b2d1a48cf5a2965@git.gfran.co/gffranco/xbox-webapi-vala.git
-revision = master
+url = https://github.com/openxbox/xbox-webapi-vala.git
+revision = authentication

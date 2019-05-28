@@ -1,15 +1,15 @@
 using Gtk;
-using WebKit;
 using Soup;
-using Json;
+using WebKit;
 using XboxWebApi.Authentication;
 using XboxWebApi.Authentication.Model;
 
 namespace OpenXbox.Client {
+
     [GtkTemplate (ui = "/com/github/gffranco/openxboxclient/login.glade")]
     public class LoginWindow : Gtk.Window {
+
         [GtkChild] private WebView webkitview;
-        [GtkChild] private TextView log;
 
         public LoginWindow () {
             ConfigureLoginWindow();
@@ -17,20 +17,18 @@ namespace OpenXbox.Client {
         }
 
         private void ConfigureWebView() {
-
             webkitview.load_changed.connect((event) => {
                 if(event == LoadEvent.REDIRECTED) {
                     var redirected_uri = webkitview.get_uri();
-                    debug ("Redirect: %s", redirected_uri);
+                    
                     URI parsed_uri = new URI(redirected_uri);
                     var fragment = parsed_uri.get_fragment();
-                    debug ("Fragments: %s", fragment);
+                    
                     var query = Form.decode(fragment);
-                    query.foreach((k,v) => {
-                        debug ("%s: %s", k,v);
-                    });
+                    
                     WindowsLiveResponse wlr = new WindowsLiveResponse.from_query(query);
                     debug ("Response: %s", wlr.to_string());
+
                     OpenXbox.Services.auth_service = new AuthenticationService.from_windows_live_response(wlr);
                     info (OpenXbox.Services.auth_service.authenticate() ? "Authenticated!" : "Failed to authenticate");
                 }
@@ -44,13 +42,9 @@ namespace OpenXbox.Client {
         [GtkCallback]
         public void on_login_show() {
             info ("Starting authentication");
-            var url = OpenXbox.Services.auth_service.get_authentication_url();
+            var url = AuthenticationService.get_authentication_url();
             debug ("Loading authentication website: %s", url);
             webkitview.load_uri (url);
-        }
-
-        private void log_message(string msg) {
-            log.buffer.text += msg + "\n";
         }
     }
 }
